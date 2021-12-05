@@ -1,7 +1,6 @@
-# DATAH5R04
-Assignment 3 for Programming for Data Scientists
+# Assignment 3 for Programming for Data Scientists
 
-### Creation of Virtual Machines, Using Nodes and Hadoop to Analyse Data
+### Tidy Data, Plotly and Flask
 
 - Student Name:  			Karina Jonina
 - Student Code: 			c00278440
