@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>{{ title }}</title>
+        <!-- stylesheets and JS can go in here and are shared globally -->
+        <link rel="stylesheet" href="static/hello.css">
+    </head>
+    <body>
+        <h2>{{ title }}</h2>
+        {% block body %}
+
+
+        {% endblock %}
+        <hr>
+        Copyright (c) 2021 by Paul Barry.
+    </body>
+</html>
