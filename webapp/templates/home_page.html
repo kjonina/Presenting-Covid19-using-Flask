@@ -1,126 +1,31 @@
- {% extends 'base.html' %}
+
+{% extends 'base.html' %}
 
 
 {% block content %}
 
+  <!-- Main Content -->
+  <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+      <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group me-2">
+        </div>
+      </div>
+    </div>
 
-<style>
-  .table{
-    display:block;
-  }
+      <section class="py-5 text-center container">
+        <div class="row py-lg-5">
+          <div class="col-lg-6 col-md-8 mx-auto">
+            <h1 class="fw-light">Hi, I am Karina!</h1>
+            <p class="lead text-muted">A student currently enrolled in Master in Science in Data Science. I wish to abide in my passion for the community by creating, evolving, maintaining, and ultimately revealing meaningful insights that support and validate relevant, data-driven change. To satisfy my curiosity and challenge myself by using my multidisciplinary background to implement scalable, statistical analysis, and beautiful visual assessments. </p>
+            <p>
+              <a class="btn btn-primary my-2">Assignment for Programming for Data Scientists</a>
+            </p>
 
-  .two{
-    display:none;
-  }
+          </div>
+        </div>
+      </section>
 
-  .three{
-    display:none;
-  }
-
-  .four{
-      display:none;
-  }
-
-
-  .five{
-    display:none;
-  }
-
-  .six{
-    display:none;
-  }
-
-  .seven{
-    display:none;
-  }
-
-
-  .graph1{
-    display:none;
-  }
-
-  .graph2{
-    display:none;
-  }
-
-  .graph3{
-    display:none;
-  }
-
-  .graph4{
-    display:none;
-  }
-
-
-  .graph5{
-    display:none;
-  }
-
-  .graph6{
-    display:none;
-  }
-
-  .graph7{
-    display:none;
-  }
-
-</style>
-
-
-<div id='graph1' class="one">
-  {% if graph1 %}
-  {{ graph1|safe }}
-  {% else %}
-  <p>Graph 1 was not provided.</p>
-  {% endif %}
-</div>
-
-<div id='graph2' class="two">
-  {% if graph2 %}
-  {{ graph2|safe }}
-  {% else %}
-  <p>Graph 2 was not provided.</p>
-  {% endif %}
-</div>
-
-<div id='graph3' class="three">
-  {% if graph3 %}
-  {{ graph3|safe }}
-  {% else %}
-  <p>Graph 3 was not provided.</p>
-  {% endif %}
-</div>
-
-<div id='graph4' class="four">
-  {% if graph4 %}
-  {{ graph4|safe }}
-  {% else %}
-  <p>Graph 4 was not provided.</p>
-  {% endif %}
-</div>
-
-<div id='graph5' class="five">
-  {% if graph5 %}
-  {{ graph5|safe }}
-  {% else %}
-  <p>Graph 5 was not provided.</p>
-  {% endif %}
-</div>
-
-<div id='graph6' class="six">
-  {% if graph6 %}
-  {{ graph6|safe }}
-  {% else %}
-  <p>Graph 6 was not provided.</p>
-  {% endif %}
-</div>
-
-<div id='graph7' class="seven">
-  {% if graph1 %}
-  {{ graph7|safe }}
-  {% else %}
-  <p>Graph 7 was not provided.</p>
-  {% endif %}
-</div>
+</main>
 
 {% endblock %}

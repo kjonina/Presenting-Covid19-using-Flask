@@ -21,7 +21,7 @@ df['Age_Range'] = df['Age_Range'].cat.reorder_categories(
     ['1-4','5-14','15-24', '25-34', '35-44', '45-54', '55-64','65-74', '75-84','85+'], ordered=True)
 
 # =============================================================================
-# Changing data type for different columns 
+# Changing data type for different columns
 # =============================================================================
 
 df['Date'] = df['Date'].astype(str)
@@ -110,80 +110,85 @@ median_age_df.tail()
 # =============================================================================
 # Plotly Graph 1
 # =============================================================================
-fig = go.Figure()
 
-age = go.Scatter(x = confirmed_cc_df['Date'],
-                             y = confirmed_cc_df['Daily Cases'],
-                             name = 'Daily Cases',
-                             mode = 'lines',
-                             customdata = confirmed_cc_df['Column'],
-                             hovertemplate = "<b>%{customdata}</b><br><br>" +
-                                            "Date: %{x|%d %b %Y} <br>" +
-                                            "Covid-19 Cases: %{y:,.}<br>"+
-                                             "<extra></extra>",
-                             line = dict(color = "blue"))
+def create_covid_graph():
+    fig = go.Figure()
 
-hospitalisation = go.Scatter(x = hospital_cc_df['Date'],
-                             y = hospital_cc_df['Daily Cases'],
-                             name = 'Daily Hospitalisation with Covid',
-                             mode = 'lines',
-                             customdata = hospital_cc_df['Column'],
-                             hovertemplate = "<b>%{customdata}</b><br><br>" +
-                                            "Date: %{x|%d %b %Y} <br>" +
-                                            "Daily Hospitalisation with Covid: %{y:,.}<br>"+
-                                             "<extra></extra>",
-                             line = dict(color = "red"))
+    age = go.Scatter(x = confirmed_cc_df['Date'],
+                                 y = confirmed_cc_df['Daily Cases'],
+                                 name = 'Daily Cases',
+                                 mode = 'lines',
+                                 customdata = confirmed_cc_df['Column'],
+                                 hovertemplate = "<b>%{customdata}</b><br><br>" +
+                                                "Date: %{x|%d %b %Y} <br>" +
+                                                "Covid-19 Cases: %{y:,.}<br>"+
+                                                 "<extra></extra>",
+                                 line = dict(color = "blue"))
 
-icu = go.Scatter(x = icu_cc_df['Date'],
-                             y = icu_cc_df['Daily Cases'],
-                             name = 'Daily ICU Numbers',
-                             mode = 'lines',
-                             customdata = icu_cc_df['Column'],
-                             hovertemplate = "<b>%{customdata}</b><br><br>" +
-                                            "Date: %{x|%d %b %Y} <br>" +
-                                            "Daily Hospitalisation with Covid: %{y:,.}<br>"+
-                                             "<extra></extra>",
-                             line = dict(color = "black"))
+    hospitalisation = go.Scatter(x = hospital_cc_df['Date'],
+                                 y = hospital_cc_df['Daily Cases'],
+                                 name = 'Daily Hospitalisation with Covid',
+                                 mode = 'lines',
+                                 customdata = hospital_cc_df['Column'],
+                                 hovertemplate = "<b>%{customdata}</b><br><br>" +
+                                                "Date: %{x|%d %b %Y} <br>" +
+                                                "Daily Hospitalisation with Covid: %{y:,.}<br>"+
+                                                 "<extra></extra>",
+                                 line = dict(color = "red"))
 
-data = [age, hospitalisation, icu]
+    icu = go.Scatter(x = icu_cc_df['Date'],
+                                 y = icu_cc_df['Daily Cases'],
+                                 name = 'Daily ICU Numbers',
+                                 mode = 'lines',
+                                 customdata = icu_cc_df['Column'],
+                                 hovertemplate = "<b>%{customdata}</b><br><br>" +
+                                                "Date: %{x|%d %b %Y} <br>" +
+                                                "Daily Hospitalisation with Covid: %{y:,.}<br>"+
+                                                 "<extra></extra>",
+                                 line = dict(color = "black"))
 
-layout = dict(
-    title = 'Covid-19 Cases',
-    yaxis_title = 'Covid-19 Cases',
-    autosize = False, width = 800, height = 600,
-    xaxis=dict(
-        rangeselector=dict(
-            buttons=list([
-                            dict(count = 7, step = "day", stepmode = "backward", label = "1W"),
-                            dict(count = 1, step = "month", stepmode = "backward", label = "1M"),
-                            dict(count = 3, step = "month", stepmode = "backward", label = "3M"),
-                            dict(count = 6, step = "month", stepmode = "backward", label = "6M"),
-                            dict(count = 1, step = "year", stepmode = "backward", label = "1Y"),
-                            dict(count = 2, step = "year", stepmode = "backward", label = "2Y"),
-                            dict(count = 5, step = "year", stepmode = "backward", label = "5Y"),
-                            dict(count = 1, step = "year", stepmode = "todate", label = "YTD"),
-                            dict(count = 1, step = "all", stepmode = "backward", label = "MAX")])
-        ),
-        rangeslider=dict(
-            visible = True
-        ),
-        type='date'
+    data = [age, hospitalisation, icu]
+
+    layout = dict(
+        title = 'Covid-19 Cases',
+        yaxis_title = 'Covid-19 Cases',
+        autosize = False, width = 800, height = 600,
+        xaxis=dict(
+            rangeselector=dict(
+                buttons=list([
+                                dict(count = 7, step = "day", stepmode = "backward", label = "1W"),
+                                dict(count = 1, step = "month", stepmode = "backward", label = "1M"),
+                                dict(count = 3, step = "month", stepmode = "backward", label = "3M"),
+                                dict(count = 6, step = "month", stepmode = "backward", label = "6M"),
+                                dict(count = 1, step = "year", stepmode = "backward", label = "1Y"),
+                                dict(count = 2, step = "year", stepmode = "backward", label = "2Y"),
+                                dict(count = 5, step = "year", stepmode = "backward", label = "5Y"),
+                                dict(count = 1, step = "year", stepmode = "todate", label = "YTD"),
+                                dict(count = 1, step = "all", stepmode = "backward", label = "MAX")])
+            ),
+            rangeslider=dict(
+                visible = True
+            ),
+            type='date'
+        )
     )
-)
 
-fig = go.FigureWidget(data=data, layout=layout)
-# fig.update_layout(showlegend=False)
-fig.update_layout(legend=dict(
-    orientation="h",
-    yanchor="bottom",
-    y=-0.5,
-    xanchor="right",
-    x=1
-))
-
+    fig = go.FigureWidget(data=data, layout=layout)
+    # fig.update_layout(showlegend=False)
+    fig.update_layout(legend=dict(
+        orientation="h",
+        yanchor="bottom",
+        y=-0.5,
+        xanchor="right",
+        x=1
+    ))
 
 
-fig.show()
+
+    covid_graph = fig.to_html(full_html=False, default_height=1000, default_width=1500)
+
+    return covid_graph
+
 
 
 # =============================================================================
@@ -205,7 +210,7 @@ for age in age_list:
     fig.add_trace(go.Scatter(
                 x=new_aged_df['Date'],
                 y=new_aged_df['Daily Cases'],
-                name=age, 
+                name=age,
                 mode='lines',
                 customdata = new_aged_df['Age_Range'],
                 hovertemplate="<b>Age Range: %{customdata}</b><br><br>" +
@@ -215,14 +220,14 @@ for age in age_list:
 
 # Loop through the suburbs
 for age in age_list:
-    
+
   	# Subset the DataFrame
     new_h_df = hospitalised_df[hospitalised_df['Age_Range'] == age]
     # Add a trace for each suburb subset
     fig.add_trace(go.Scatter(
                 x=new_h_df['Date'],
                 y=new_h_df['Daily Cases'],
-                name=age, 
+                name=age,
                 mode='lines',
                 customdata = new_h_df['Age_Range'],
                 hovertemplate="<b>Age Range: %{customdata}</b><br><br>" +
@@ -233,35 +238,35 @@ for age in age_list:
 
 # Create the buttons
 dropdown_buttons = [
-{'label': "1-4", 'method': 'update', 'args': [{"visible": [True, False, False, False, 
-                                                            False, False, False, False, False, False]}, 
+{'label': "1-4", 'method': 'update', 'args': [{"visible": [True, False, False, False,
+                                                            False, False, False, False, False, False]},
                                               {"title": "1-4"}]},
-{'label': "5-14", 'method': 'update', 'args': [{"visible": [False,True, False, False, 
-                                                            False, False, False, False, False, False]}, 
+{'label': "5-14", 'method': 'update', 'args': [{"visible": [False,True, False, False,
+                                                            False, False, False, False, False, False]},
                                                {"title": "5-15"}]},
-{'label': "15-24", 'method': 'update', 'args': [{"visible": [False,False, True, False, 
-                                                             False, False, False, False, False, False]}, 
+{'label': "15-24", 'method': 'update', 'args': [{"visible": [False,False, True, False,
+                                                             False, False, False, False, False, False]},
                                                 {"title": "15-14"}]},
-{'label': "25-34", 'method': 'update', 'args': [{"visible": [False,False, False, True, 
-                                                             False, False, False, False, False, False]}, 
+{'label': "25-34", 'method': 'update', 'args': [{"visible": [False,False, False, True,
+                                                             False, False, False, False, False, False]},
                                                 {"title": "25-34"}]},
-{'label': "35-44", 'method': 'update', 'args': [{"visible": [False,False, False, False, 
-                                                             True, False, False, False, False, False]}, 
+{'label': "35-44", 'method': 'update', 'args': [{"visible": [False,False, False, False,
+                                                             True, False, False, False, False, False]},
                                                 {"title": "35-44"}]},
-{'label': "45-54", 'method': 'update', 'args': [{"visible": [False, False, False, False, 
-                                                             False, True, False, False, False, False]}, 
+{'label': "45-54", 'method': 'update', 'args': [{"visible": [False, False, False, False,
+                                                             False, True, False, False, False, False]},
                                                 {"title": "45-54"}]},
-{'label': "55-64", 'method': 'update', 'args': [{"visible": [False, False, False, False, 
-                                                             False, False, True, False, False, False]}, 
+{'label': "55-64", 'method': 'update', 'args': [{"visible": [False, False, False, False,
+                                                             False, False, True, False, False, False]},
                                                 {"title": "55-64"}]},
-{'label': "65-74", 'method': 'update', 'args': [{"visible": [False, False, False, False, 
-                                                             False, False, False, True, False, False]}, 
+{'label': "65-74", 'method': 'update', 'args': [{"visible": [False, False, False, False,
+                                                             False, False, False, True, False, False]},
                                                 {"title": "65-74"}]},
-{'label': "75-84", 'method': 'update', 'args': [{"visible": [False, False, False, False, 
-                                                             False, False, False, False, True, False]}, 
+{'label': "75-84", 'method': 'update', 'args': [{"visible": [False, False, False, False,
+                                                             False, False, False, False, True, False]},
                                                 {"title": "75-84"}]},
-{'label': "85+", 'method': 'update', 'args': [{"visible": [False, False,False, False, False, 
-                                                            False, False, False, False, True]}, 
+{'label': "85+", 'method': 'update', 'args': [{"visible": [False, False,False, False, False,
+                                                            False, False, False, False, True]},
                                               {"title": "85+"}]},
 ]
 
@@ -303,15 +308,15 @@ fig.show()
 # Plotly Graph 3
 # =============================================================================
 
-fig = px.bar(aged_and_hospitalised_df, 
-             x="Age_Range", 
-             y="Daily Cases", 
+fig = px.bar(aged_and_hospitalised_df,
+             x="Age_Range",
+             y="Daily Cases",
              color="Column",
-             animation_frame="Date", 
-             animation_group="Age_Range", 
+             animation_frame="Date",
+             animation_group="Age_Range",
              range_y=[0,700],
              barmode='group',
-            category_orders={"Age_Range": ['1-4','5-14','15-24', '25-34', '35-44', 
+            category_orders={"Age_Range": ['1-4','5-14','15-24', '25-34', '35-44',
                                            '45-54', '55-64','65-74', '75-84','85+']})
 fig.show()
 # =============================================================================
