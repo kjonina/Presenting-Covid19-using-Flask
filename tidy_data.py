@@ -7,6 +7,8 @@ import re
 from datetime import datetime
 import numpy as np
 
+
+
 def create_csv():
     # gettting the CSV from the website
     url = 'https://opendata-geohive.hub.arcgis.com/datasets/d8eb52d56273413b84b0187a4e9117be_0.csv?outSR=%7B%22latestWkid%22%3A3857%2C%22wkid%22%3A102100%7D.'
@@ -147,44 +149,54 @@ def create_csv():
     # =============================================================================
     df_list = []
 
+df_list = []
+
+
     for i in column_list:
         if "Hospitalised Aged" == i: 
+            print(i)
             for age in age_list:
-                df = hospitalised_df[hospitalised_df['Age_Range'].str.contains(age)]
-                df = pd.DataFrame(df)
-                df['Daily Cases'] = df['Cases'].diff(1)
-                df['Diff'] = df['Daily Cases'].diff(1)
-                df_list.append(df)
+                h_df = hospitalised_df[hospitalised_df['Age_Range'].str.contains(age)]
+                h_df = pd.DataFrame(h_df)
+                h_df['Daily Cases'] = h_df['Cases'].diff(1)
+                h_df['Diff'] = h_df['Daily Cases'].diff(1)
+    #             h_df = h_df.dropna()
+    #             h_df["Daily Cases"] = h_df["Daily Cases"].astype(int)
+    #             h_df["Diff"] = h_df["Diff"].astype(int)
+                df_list.append(h_df)
 
         elif "Aged" == i: 
+            print(i)
             for age in age_list:
-                df = aged_df[aged_df['Age_Range'].str.contains(age)]
-                df = pd.DataFrame(df)
-                df['Daily Cases'] = df['Cases'].diff(1)
-                df['Diff'] = df['Daily Cases'].diff(1)
-                df_list.append(df)
+                a_df = aged_df[aged_df['Age_Range'].str.contains(age)]
+                a_df = pd.DataFrame(a_df)
+                a_df['Daily Cases'] = a_df['Cases'].diff(1)
+                a_df['Diff'] = a_df['Daily Cases'].diff(1)
+    #             a_df = a_df.dropna()
+    #             a_df["Daily Cases"] = a_df["Daily Cases"].astype(int)
+    #             a_df["Diff"] = a_df["Diff"].astype(int)
+                a_df.append(a_df)
 
         elif  i in accumulated:
-            df = new_df[new_df['Column'].str.contains(i)]
-            df = pd.DataFrame(df)
-            df['Daily Cases'] = df['Cases'].diff(1)
-            df['Diff'] = df['Daily Cases'].diff(1)
-            df_list.append(df)
-
+            print(i)
+            n_df = df[df['Column'].str.contains(i)]
+            n_df = pd.DataFrame(n_df)
+            n_df['Daily Cases'] = n_df['Cases'].diff(1)
+            n_df['Diff'] = n_df['Daily Cases'].diff(1)
+    #         n_df = n_df.dropna()
+    #         n_df["Daily Cases"] = n_df["Daily Cases"].astype(int)
+    #         n_df["Diff"] = n_df["Diff"].astype(int)
+            df_list.append(n_df)
         else:
-            df = df[df['Column'].str.contains(i)]
-            df = pd.DataFrame(df)
-            df['Daily Cases'] = 'NaN'
-            df['Diff'] = df['Cases'].diff(1)
-            df_list.append(df) 
-
-    df =  pd.concat(df_list)
-
-    # sorting data by date
-    df = df.sort_values(ascending = True, by = ["Date"])
-
-    # reseting the dataframe index
-    df = df.reset_index(drop=True)
+            print(i)
+            n_df = df[df['Column'].str.contains(i)]
+            n_df = pd.DataFrame(n_df)
+            n_df['Daily Cases'] = np.nan
+            n_df['Diff'] = n_df['Cases'].diff(1)
+    #         n_df = n_df.dropna()
+    #         n_df["Daily Cases"] = n_df["Daily Cases"].astype(int)
+    #         n_df["Diff"] = n_df["Diff"].astype(int)
+            df_list.append(n_df) 
 
     # =============================================================================
     # Saving new dataframe to csv
