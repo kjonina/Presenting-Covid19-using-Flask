@@ -1,17 +1,167 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>{{ title }}</title>
-        <!-- stylesheets and JS can go in here and are shared globally -->
-        <link rel="stylesheet" href="static/hello.css">
-    </head>
-    <body>
-        <h2>{{ title }}</h2>
-        {% block body %}
+
+<!doctype html>
+<html lang="en">
+<head>
 
 
-        {% endblock %}
-        <hr>
-        Copyright (c) 2021 by Paul Barry.
-    </body>
+  <meta charset="utf-8">
+  <meta name="description" content="Data Analyst">
+  <meta name="author" content="Karin Jonina">
+  <meta name="generator" content="Karina Jonina">
+  <title>Karina Jonina</title>
+
+  <link rel="canonical" href="https://getbootstrap.com/docs/5.0/examples/dashboard/">
+
+
+  <style>
+  .bd-placeholder-img {
+    font-size: 1.125rem;
+    text-anchor: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+  }
+
+  @media (min-width: 768px) {
+    .bd-placeholder-img-lg {
+      font-size: 3.5rem;
+    }
+  }
+  </style>
+
+
+  <!-- Custom styles for this template -->
+  <link href="dashboard.css" rel="stylesheet">
+</head>
+<body>
+  <!-- header -->
+  {% include 'partials/_topbar.html' %}
+
+  <!-- sidebar -->
+  {% include 'partials/_sidebar.html' %}
+
+  <!-- Main Content -->
+  <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+      <h1 class="h1">Dashboard</h1>
+      <div class="btn-toolbar mb-2 mb-md-0">
+        <div class="btn-group me-2">
+          <!--Navs at the top -->
+          <button type="button" id="graph1" class="btn btn-sm btn-outline-secondary">Graph 1</button>
+          <button type="button" id="graph2" class="btn btn-sm btn-outline-secondary">Graph 2</button>
+          <button type="button" id="graph3" class="btn btn-sm btn-outline-secondary">Graph 3</button>
+          <button type="button" id="graph4" class="btn btn-sm btn-outline-secondary">Graph 4</button>
+          <button type="button" id="graph5" class="btn btn-sm btn-outline-secondary">Graph 5</button>
+          <button type="button" id="graph6" class="btn btn-sm btn-outline-secondary">Graph 6</button>
+          <button type="button" id="graph7" class="btn btn-sm btn-outline-secondary">Graph 7</button>
+
+        </div>
+      </div>
+    </div>
+    <div class="row">
+
+      {% block content %}
+
+      {% endblock %}
+    </div>
+  </main>
+
+  <!-- footer-->
+  {% include 'partials/_footer.html' %}
+
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+  <!-- JavaScript Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+  <!-- jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+
+
+  <script type="text/javascript">
+
+  $(document).ready(function(){
+            var hideAllButOne = function (identifier) {
+              $('#graph1').hide();
+              $('#graph2').hide();
+              $('#graph3').hide();
+              $('#graph4').hide();
+              $('#graph4').hide();
+              $('#graph5').hide();
+              $('#graph6').hide();
+              $('#graph7').hide();
+              $(identifier).show();
+            };
+              $('#graph1').click(()=> hideAllButOne("#graph1"));
+              $('#graph2').click(()=> hideAllButOne("#graph2"));
+              $('#graph3').click(()=> hideAllButOne("#graph3"));
+              $('#graph4').click(()=> hideAllButOne("#graph4"));
+              $('#graph5').click(()=> hideAllButOne("#graph5"));
+              $('#graph6').click(()=> hideAllButOne("#graph6"));
+              $('#graph7').click(()=> hideAllButOne("#graph57"));
+            });
+
+          $('#graph1').on('click', function(){
+            $('#graph1').show();
+            $('#graph2').hide();
+            $('#graph3').hide();
+            $('#graph4').hide();
+            $('#graph5').hide();
+            $('#graph6').hide();
+            $('#graph7').hide();
+          });
+
+          $('#graph2').on('click', function(){
+            $('#graph1').hide();
+            $('#graph2').show();
+            $('#graph3').hide();
+            $('#graph4').hide();
+            $('#graph5').hide();
+            $('#graph6').hide();
+            $('#graph7').hide();
+          });
+
+          $('#graph3').on('click', function(){
+            $('#graph1').hide();
+            $('#graph2').hide();
+            $('#graph3').show();
+            $('#graph4').show();
+            $('#graph5').hide();
+            $('#graph6').hide();
+            $('#graph7').hide();
+          });
+
+          $('#graph5').on('click', function(){
+            $('#graph1').hide();
+            $('#graph2').show();
+            $('#graph3').hide();
+            $('#graph4').hide();
+            $('#graph5').show();
+            $('#graph6').hide();
+            $('#graph7').hide();
+          });
+
+          $('#graph6').on('click', function(){
+            $('#graph1').hide();
+            $('#graph2').show();
+            $('#graph3').hide();
+            $('#graph4').hide();
+            $('#graph5').hide();
+            $('#graph6').show();
+            $('#graph7').hide();
+          });
+
+          $('#graph7').on('click', function(){
+            $('#graph1').hide();
+            $('#graph2').show();
+            $('#graph3').hide();
+            $('#graph4').hide();
+            $('#graph5').hide();
+            $('#graph6').hide();
+            $('#graph7').show();
+          });
+
+
+
+  </script>
+</body>
 </html>

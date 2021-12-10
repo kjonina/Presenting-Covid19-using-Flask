@@ -1,0 +1,126 @@
+ {% extends 'base.html' %}
+
+
+{% block content %}
+
+
+<style>
+  .table{
+    display:block;
+  }
+
+  .two{
+    display:none;
+  }
+
+  .three{
+    display:none;
+  }
+
+  .four{
+      display:none;
+  }
+
+
+  .five{
+    display:none;
+  }
+
+  .six{
+    display:none;
+  }
+
+  .seven{
+    display:none;
+  }
+
+
+  .graph1{
+    display:none;
+  }
+
+  .graph2{
+    display:none;
+  }
+
+  .graph3{
+    display:none;
+  }
+
+  .graph4{
+    display:none;
+  }
+
+
+  .graph5{
+    display:none;
+  }
+
+  .graph6{
+    display:none;
+  }
+
+  .graph7{
+    display:none;
+  }
+
+</style>
+
+
+<div id='graph1' class="one">
+  {% if graph1 %}
+  {{ graph1|safe }}
+  {% else %}
+  <p>Graph was not provided.</p>
+  {% endif %}
+</div>
+
+<div id='graph2' class="two">
+  {% if graph2 %}
+  {{ graph2|safe }}
+  {% else %}
+  <p>Graph was not provided.</p>
+  {% endif %}
+</div>
+
+<div id='graph3' class="three">
+  {% if graph3 %}
+  {{ graph3|safe }}
+  {% else %}
+  <p>Graph was not provided.</p>
+  {% endif %}
+</div>
+
+<div id='graph4' class="four">
+  {% if graph4 %}
+  {{ graph4|safe }}
+  {% else %}
+  <p>Graph was not provided.</p>
+  {% endif %}
+</div>
+
+<div id='graph5' class="five">
+  {% if graph5 %}
+  {{ graph5|safe }}
+  {% else %}
+  <p>Graph was not provided.</p>
+  {% endif %}
+</div>
+
+<div id='graph6' class="six">
+  {% if graph6 %}
+  {{ graph6|safe }}
+  {% else %}
+  <p>Graph was not provided.</p>
+  {% endif %}
+</div>
+
+<div id='graph7' class="seven">
+  {% if graph1 %}
+  {{ graph7|safe }}
+  {% else %}
+  <p>Graph was not provided.</p>
+  {% endif %}
+</div>
+
+{% endblock %}
