@@ -47,13 +47,13 @@
       <div class="btn-toolbar mb-2 mb-md-0">
         <div class="btn-group me-2">
           <!--Navs at the top -->
-          <button type="button" id="graph1" class="btn btn-sm btn-outline-secondary">Graph 1</button>
-          <button type="button" id="graph2" class="btn btn-sm btn-outline-secondary">Graph 2</button>
-          <button type="button" id="graph3" class="btn btn-sm btn-outline-secondary">Graph 3</button>
-          <button type="button" id="graph4" class="btn btn-sm btn-outline-secondary">Graph 4</button>
-          <button type="button" id="graph5" class="btn btn-sm btn-outline-secondary">Graph 5</button>
-          <button type="button" id="graph6" class="btn btn-sm btn-outline-secondary">Graph 6</button>
-          <button type="button" id="graph7" class="btn btn-sm btn-outline-secondary">Graph 7</button>
+          <button type="button" id="graph1_button" class="btn btn-sm btn-outline-secondary">Graph 1</button>
+          <button type="button" id="graph2_button" class="btn btn-sm btn-outline-secondary">Graph 2</button>
+          <button type="button" id="graph3_button" class="btn btn-sm btn-outline-secondary">Graph 3</button>
+          <button type="button" id="graph4_button" class="btn btn-sm btn-outline-secondary">Graph 4</button>
+          <button type="button" id="graph5_button" class="btn btn-sm btn-outline-secondary">Graph 5</button>
+          <button type="button" id="graph6_button" class="btn btn-sm btn-outline-secondary">Graph 6</button>
+          <button type="button" id="graph7_button" class="btn btn-sm btn-outline-secondary">Graph 7</button>
 
         </div>
       </div>
@@ -91,75 +91,14 @@
               $('#graph7').hide();
               $(identifier).show();
             };
-              $('#graph1').click(()=> hideAllButOne("#graph1"));
-              $('#graph2').click(()=> hideAllButOne("#graph2"));
-              $('#graph3').click(()=> hideAllButOne("#graph3"));
-              $('#graph4').click(()=> hideAllButOne("#graph4"));
-              $('#graph5').click(()=> hideAllButOne("#graph5"));
-              $('#graph6').click(()=> hideAllButOne("#graph6"));
-              $('#graph7').click(()=> hideAllButOne("#graph57"));
+              $('#graph1_button').click(()=> hideAllButOne("#graph1"));
+              $('#graph2_button').click(()=> hideAllButOne("#graph2"));
+              $('#graph3_button').click(()=> hideAllButOne("#graph3"));
+              $('#graph4_button').click(()=> hideAllButOne("#graph4"));
+              $('#graph5_button').click(()=> hideAllButOne("#graph5"));
+              $('#graph6_button').click(()=> hideAllButOne("#graph6"));
+              $('#graph7_button').click(()=> hideAllButOne("#graph7"));
             });
-
-          $('#graph1').on('click', function(){
-            $('#graph1').show();
-            $('#graph2').hide();
-            $('#graph3').hide();
-            $('#graph4').hide();
-            $('#graph5').hide();
-            $('#graph6').hide();
-            $('#graph7').hide();
-          });
-
-          $('#graph2').on('click', function(){
-            $('#graph1').hide();
-            $('#graph2').show();
-            $('#graph3').hide();
-            $('#graph4').hide();
-            $('#graph5').hide();
-            $('#graph6').hide();
-            $('#graph7').hide();
-          });
-
-          $('#graph3').on('click', function(){
-            $('#graph1').hide();
-            $('#graph2').hide();
-            $('#graph3').show();
-            $('#graph4').show();
-            $('#graph5').hide();
-            $('#graph6').hide();
-            $('#graph7').hide();
-          });
-
-          $('#graph5').on('click', function(){
-            $('#graph1').hide();
-            $('#graph2').show();
-            $('#graph3').hide();
-            $('#graph4').hide();
-            $('#graph5').show();
-            $('#graph6').hide();
-            $('#graph7').hide();
-          });
-
-          $('#graph6').on('click', function(){
-            $('#graph1').hide();
-            $('#graph2').show();
-            $('#graph3').hide();
-            $('#graph4').hide();
-            $('#graph5').hide();
-            $('#graph6').show();
-            $('#graph7').hide();
-          });
-
-          $('#graph7').on('click', function(){
-            $('#graph1').hide();
-            $('#graph2').show();
-            $('#graph3').hide();
-            $('#graph4').hide();
-            $('#graph5').hide();
-            $('#graph6').hide();
-            $('#graph7').show();
-          });
-
 
 
   </script>
