@@ -112,7 +112,7 @@ def create_csv():
         "Cases"
     ]]
 
-
+    df['Column']= df['Column'].str.replace("Requiring Covid Cases", 'Requiring ICU Covid Cases')
 
     # =============================================================================
     # Assigning age_list
@@ -133,7 +133,7 @@ def create_csv():
     # Columns that have accumulated cases and no daily cases count
     accumulated = ['Male','Hospitalised Covid Cases', 'Hospitalised Aged',
                    'Healthcare Workers Covid Cases', 'Aged', 'Unknown', 'Female',
-                   'Median Age', 'Requiring Covid Cases', 'Clusters Notified']
+                   'Median Age', 'Requiring ICU Covid Cases', 'Clusters Notified']
 
 
 

@@ -51,7 +51,7 @@ from tidy_data import create_csv
 #
 # # column cases actually represents accumulated cases
 # hospitalised_df = hospitalised_df.rename(columns={'Cases': 'Accumulated Cases'})
-#
+
 # # =============================================================================
 # # Dataset for Confirmed Covid Cases with Age Range
 # # =============================================================================
@@ -112,7 +112,7 @@ from tidy_data import create_csv
 # =============================================================================
 
 
-def create_covid_graph(df):
+def graph1(df):
     # =============================================================================
     # Changing data type for different columns
     # =============================================================================
@@ -193,7 +193,7 @@ def create_covid_graph(df):
                                                 "Date: %{x|%d %b %Y} <br>" +
                                                 "Covid-19 Cases: %{y:,.}<br>"+
                                                  "<extra></extra>",
-                                 line = dict(color = "blue"))
+                                 line = dict(color = "#636EFA"))
 
     hospitalisation = go.Scatter(x = hospital_cc_df['Date'],
                                  y = hospital_cc_df['Daily Cases'],
@@ -204,7 +204,7 @@ def create_covid_graph(df):
                                                 "Date: %{x|%d %b %Y} <br>" +
                                                 "Daily Hospitalisation with Covid: %{y:,.}<br>"+
                                                  "<extra></extra>",
-                                 line = dict(color = "red"))
+                                 line = dict(color = "#EF553B"))
 
     icu = go.Scatter(x = icu_cc_df['Date'],
                                  y = icu_cc_df['Daily Cases'],
@@ -215,14 +215,14 @@ def create_covid_graph(df):
                                                 "Date: %{x|%d %b %Y} <br>" +
                                                 "Daily Hospitalisation with Covid: %{y:,.}<br>"+
                                                  "<extra></extra>",
-                                 line = dict(color = "black"))
+                                 line = dict(color = "#316395"))
 
     data = [age, hospitalisation, icu]
 
     layout = dict(
-        title = 'Covid-19 Cases',
-        yaxis_title = 'Covid-19 Cases',
-        autosize = False, width = 800, height = 600,
+        title = 'Daily COVID-19 Cases in Ireland', title_font_size=30,
+        yaxis_title = 'Daily COVID-19 Cases',yaxis_title_font_size=20,
+        autosize = False, width = 1400, height = 1000,
         xaxis=dict(
             rangeselector=dict(
                 buttons=list([
@@ -231,8 +231,6 @@ def create_covid_graph(df):
                                 dict(count = 3, step = "month", stepmode = "backward", label = "3M"),
                                 dict(count = 6, step = "month", stepmode = "backward", label = "6M"),
                                 dict(count = 1, step = "year", stepmode = "backward", label = "1Y"),
-                                dict(count = 2, step = "year", stepmode = "backward", label = "2Y"),
-                                dict(count = 5, step = "year", stepmode = "backward", label = "5Y"),
                                 dict(count = 1, step = "year", stepmode = "todate", label = "YTD"),
                                 dict(count = 1, step = "all", stepmode = "backward", label = "MAX")])
             ),
@@ -255,6 +253,134 @@ def create_covid_graph(df):
 
 
 
-    covid_graph = fig.to_html(full_html=False, default_height=1000, default_width=1500)
+    graph1 = fig.to_html(full_html=False, default_height=1000, default_width=1500)
 
-    return covid_graph
+    return graph1
+
+
+# =============================================================================
+# Plotly Graph 1
+# =============================================================================
+
+
+def graph2(df):
+    # =============================================================================
+    # Dataset for Confirmed Covid Cases with Age Range
+    # =============================================================================
+    aged_df = df[df['Column'].str.startswith("Aged")]
+    aged_df = aged_df.rename(columns={'Cases': 'Accumulated Cases'})
+
+    # =============================================================================
+    # Dataset for Hospitalised Confirmed Covid Cases with Age Range
+    # =============================================================================
+    hospitalised_df = df[df['Column'].str.contains("Hospitalised Aged")]
+
+    # column cases actually represents accumulated cases
+    hospitalised_df = hospitalised_df.rename(columns={'Cases': 'Accumulated Cases'})
+
+
+    age_list = ['0-4','5-14','15-24', '25-34', '35-44', '45-54', '55-64','65-74', '75-84','85+']
+
+    fig = make_subplots(rows = 2, cols = 1, shared_xaxes = True, subplot_titles = [
+            'Daily COVID-19 Cases by Age Range',
+            'Daily Hospitalisation with COVID-19 Cases by Age Range'])
+
+    # Loop through the suburbs
+    for age in age_list:
+      	# Subset the DataFrame
+
+        new_aged_df = aged_df[aged_df['Age Range'] == age]
+        # Add a trace for each suburb subset
+        fig.add_trace(go.Scatter(
+                    x = new_aged_df['Date'],
+                    y = new_aged_df['Daily Cases'],
+                    name = age,
+                    mode ='lines', line = dict(color = "#636EFA"),
+                    customdata = new_aged_df['Age Range'],
+                    hovertemplate="<b>Age Range: %{customdata}</b><br><br>" +
+                                        "Date: %{x|%d %b %Y} <br>" +
+                                        "Daily Covid-19 Cases: %{y:,.}<br>"+
+                                        "<extra></extra>"), row = 1, col = 1)
+
+    # Loop through the suburbs
+    for age in age_list:
+
+      	# Subset the DataFrame
+        new_h_df = hospitalised_df[hospitalised_df['Age Range'] == age]
+        # Add a trace for each suburb subset
+        fig.add_trace(go.Scatter(
+                    x = new_h_df['Date'],
+                    y = new_h_df['Daily Cases'],
+                    name = age,
+                    mode = 'lines', line = dict(color = "#EF553B"),
+                    customdata = new_h_df['Age Range'],
+                    hovertemplate = "<b>Age Range: %{customdata}</b><br><br>" +
+                                        "Date: %{x|%d %b %Y} <br>" +
+                                        "Hospitalised Covid-19 Cases: %{y:,.}<br>"+
+                                        "<extra></extra>"), row = 2, col = 1)
+
+
+    # Create the buttons
+    dropdown_buttons = [
+    {'label': "1-4", 'method': 'restyle', 'args': [{"visible": [True, False, False, False,
+                                                                False, False, False, False, False, False]},
+                                                  {"title": "1-4"}]},
+    {'label': "5-14", 'method': 'restyle', 'args': [{"visible": [False,True, False, False,
+                                                                False, False, False, False, False, False]},
+                                                   {"title": "5-15"}]},
+    {'label': "15-24", 'method': 'restyle', 'args': [{"visible": [False,False, True, False,
+                                                                 False, False, False, False, False, False]},
+                                                    {"title": "15-14"}]},
+    {'label': "25-34", 'method': 'restyle', 'args': [{"visible": [False,False, False, True,
+                                                                 False, False, False, False, False, False]},
+                                                    {"title": "25-34"}]},
+    {'label': "35-44", 'method': 'restyle', 'args': [{"visible": [False,False, False, False,
+                                                                 True, False, False, False, False, False]},
+                                                    {"title": "35-44"}]},
+    {'label': "45-54", 'method': 'restyle', 'args': [{"visible": [False, False, False, False,
+                                                                 False, True, False, False, False, False]},
+                                                    {"title": "45-54"}]},
+    {'label': "55-64", 'method': 'restyle', 'args': [{"visible": [False, False, False, False,
+                                                                 False, False, True, False, False, False]},
+                                                    {"title": "55-64"}]},
+    {'label': "65-74", 'method': 'restyle', 'args': [{"visible": [False, False, False, False,
+                                                                 False, False, False, True, False, False]},
+                                                    {"title": "65-74"}]},
+    {'label': "75-84", 'method': 'restyle', 'args': [{"visible": [False, False, False, False,
+                                                                 False, False, False, False, True, False]},
+                                                    {"title": "75-84"}]},
+    {'label': "85+", 'method': 'restyle', 'args': [{"visible": [False, False,False, False,
+                                                               False, False, False, False, False, True]},
+                                                  {"title": "85+"}]},
+    ]
+
+    fig.update_layout(
+        showlegend = False,
+        xaxis_rangeslider_visible = False,
+        title = 'COVID-19 Cases for each Age Range', title_font_size=30,
+        xaxis=dict(
+            rangeselector=dict(
+                buttons=list([
+                                dict(count = 7, step = "day", stepmode = "backward", label = "1W"),
+                                dict(count = 1, step = "month", stepmode = "backward", label = "1M"),
+                                dict(count = 3, step = "month", stepmode = "backward", label = "3M"),
+                                dict(count = 6, step = "month", stepmode = "backward", label = "6M"),
+                                dict(count = 1, step = "year", stepmode = "backward", label = "1Y"),
+                                dict(count = 1, step = "year", stepmode = "todate", label = "YTD"),
+                                dict(count = 1, step = "all", stepmode = "backward", label = "MAX")]))),
+
+
+        autosize = False, width = 1400, height = 1000)
+
+    fig['layout']['yaxis1']['title']='Daily COVID-19 Cases'
+    fig['layout']['yaxis2']['title']='Daily Hospitalised COVID-19 Cases'
+
+
+
+    # Update the figure to add dropdown menu
+    fig.update_layout({'updatemenus': [{'active': 0, 'buttons': dropdown_buttons}]})
+
+
+    graph2 = fig.to_html(full_html=False, default_height=1000, default_width=1500)
+
+    return graph2
