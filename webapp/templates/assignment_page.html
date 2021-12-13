@@ -36,9 +36,18 @@
     display:none;
   }
 
+  .two_extra{
+    display:none;
+  }
+
   .three{
     display:none;
   }
+
+  .three_extra{
+    display:none;
+  }
+
 
   .four{
       display:none;
@@ -66,7 +75,15 @@
     display:none;
   }
 
+  .graph2_extra{
+    display:none;
+  }
+
   .graph3{
+    display:none;
+  }
+
+  .graph3_extra{
     display:none;
   }
 
@@ -106,11 +123,28 @@
   {% endif %}
 </div>
 
+<div id='graph2_extra' class="two_extra">
+  {% if graph2_extra %}
+  {{ graph2_extra|safe }}
+  {% else %}
+  <p>Graph 2_(extra) was not provided.</p>
+  {% endif %}
+</div>
+
 <div id='graph3' class="three">
   {% if graph3 %}
   {{ graph3|safe }}
   {% else %}
   <p>Graph 3 was not provided.</p>
+  {% endif %}
+</div>
+
+
+<div id='graph3_extra' class="three_extra">
+  {% if graph3_extra %}
+  {{ graph3_extra|safe }}
+  {% else %}
+  <p>Graph 3 extra was not provided.</p>
   {% endif %}
 </div>
 
