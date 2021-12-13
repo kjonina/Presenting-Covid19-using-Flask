@@ -1,6 +1,6 @@
-
 <!doctype html>
 <html lang="en">
+
 <head>
 
 
@@ -14,25 +14,26 @@
 
 
   <style>
-  .bd-placeholder-img {
-    font-size: 1.125rem;
-    text-anchor: middle;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    user-select: none;
-  }
-
-  @media (min-width: 768px) {
-    .bd-placeholder-img-lg {
-      font-size: 3.5rem;
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
     }
-  }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
   </style>
 
 
   <!-- Custom styles for this template -->
   <link href="dashboard.css" rel="stylesheet">
 </head>
+
 <body>
   <!-- header -->
   {% include 'partials/_topbar.html' %}
@@ -41,11 +42,9 @@
   {% include 'partials/_sidebar.html' %}
 
 
-      {% block content %}
+  {% block content %}
 
-      {% endblock %}
-    </div>
-  </main>
+  {% endblock %}
 
   <!-- footer-->
   {% include 'partials/_footer.html' %}
@@ -60,4 +59,5 @@
 
 
 </body>
+
 </html>

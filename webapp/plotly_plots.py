@@ -5,15 +5,9 @@ import plotly.express as px
 from plotly.subplots import make_subplots
 import plotly.graph_objects as go
 
-# # reading in the tidy data csv
-# df = pd.read_csv('tidy_data_df.csv', parse_dates = ['Date'])
-
-from tidy_data import create_csv
 
 
-
-# =============================================================================
-# Plotly Graph 1
+# ============================================================================ Plotly Graph 1
 # =============================================================================
 
 
@@ -339,25 +333,26 @@ def graph5(aged_df, hospitalised_df):
 
     fig = make_subplots(rows = 1, cols = 2, specs=[[{'type':'domain'}, {'type':'domain'}]])
     fig.add_trace(go.Pie(labels=total_aged_table['Age Range'],
-                                 values=total_aged_table['Daily Cases'], name="Confirmed COVID-19 Cases",
+                                 values=total_aged_table['Daily Cases'], name="Total COVID-19 Cases",
                                   hovertemplate="<b>Age Range: %{label}</b><br><br>" +
-                                        "% of Confirmed COVID-19: %{percent} <br>"+
-                                        "Number of Confirmed COVID-19: %{value} <br>"),1, 1)
+                                        "Total % of COVID-19: %{percent} <br>"+
+                                        "Total # of COVID-19: %{value} <br>"),1, 1)
     fig.add_trace(go.Pie(labels = total_hospitalised_table['Age Range'],
-                                 values = total_hospitalised_table['Daily Cases'], name = "Hospitalised COVID-19 Cases",
+                                 values = total_hospitalised_table['Daily Cases'], name = "Total Hospitalised COVID-19 Cases",
                                  hovertemplate="<b>Age Range: %{label}</b><br><br>" +
-                                        "% of Hospitalised COVID-19: %{percent} <br>" +
-                                        "Number of Hospitalised COVID-19: %{value} <br>"), 1, 2)
+                                        "Total % of Hospitalised COVID-19 Cases: %{percent} <br>" +
+                                        "Total # of Hospitalised COVID-19 Cases: %{value} <br>"), 1, 2)
 
     # Use `hole` to create a donut-like pie chart
-    fig.update_traces(hole=.4, hoverinfo="label+percent+name")
+    fig.update_traces(hole=.4)
 
     fig.update_layout(
         title_text="Total COVID-19 Cases by Age Range",
         title_font_size = 30,
         # Add annotations in the center of the donut pies.
         annotations=[dict(text='Total <br> Confirmed <br> COVID-19 <br> Cases', x=0.175, y=0.525, font_size=22, showarrow=False),
-                     dict(text='Total <br> Hospitalised <br> COVID-19 <br> Cases', x=0.835, y=0.525, font_size=22, showarrow=False)])
+                     dict(text='Total <br> Hospitalised <br> COVID-19 <br> Cases', x=0.835, y=0.525, font_size=22, showarrow=False)],
+        legend_title_text='Age Range')
     graph5 = fig.to_html(full_html=False, default_height=1000, default_width=1500)
 
     return graph5

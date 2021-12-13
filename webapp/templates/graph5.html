@@ -5,36 +5,27 @@
 
 <!-- Main Content -->
 <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
- <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-   <h1 class="h1">COVID-19 Dashboard</h1>
-   <div class="btn-toolbar mb-2 mb-md-0">
-     <div class="btn-group me-2">
-       <!--Navs at the top -->
-       <button href="/graph1" type="button" id="graph1_button" class="btn btn-sm btn-outline-secondary">Graph 1</button>
-       <button href="/graph2" type="button" id="graph2_button" class="btn btn-sm btn-outline-secondary">Graph 2</button>
-       <button href="/graph3" type="button" id="graph3_button" class="btn btn-sm btn-outline-secondary">Graph 3</button>
-       <button href="/graph4" type="button" id="graph4_button" class="btn btn-sm btn-outline-secondary">Graph 4</button>
-       <button href="/graph5" type="button" id="graph5_button" class="btn btn-sm btn-outline-secondary">Graph 5</button>
-       <button href="/graph6" type="button" id="graph6_button" class="btn btn-sm btn-outline-secondary">Graph 6</button>
-       <button href="/graph7" type="button" id="graph7_button" class="btn btn-sm btn-outline-secondary">Graph 7</button>
-
-     </div>
-   </div>
- </div>
- <div class="row">
-
-<style>
-
-</style>
-
-
-<div id='graph5' class="graph4">
- {% if graph5 %}
- {{ graph5|safe }}
- {% else %}
- <p>Graph 5 was not provided.</p>
- {% endif %}
-</div>
-
-
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+    <h1 class="h1">COVID-19 Dashboard</h1>
+    <div class="btn-toolbar mb-2 mb-md-0">
+      <div class="btn-group me-2">
+        <!--Navs at the top -->
+        <button href="/graph1" type="button" id="graph1_button" class="btn btn-sm btn-outline-secondary">Graph 1</button>
+        <button href="/graph2" type="button" id="graph2_button" class="btn btn-sm btn-outline-secondary">Graph 2</button>
+        <button href="/graph3" type="button" id="graph3_button" class="btn btn-sm btn-outline-secondary">Graph 3</button>
+        <button href="/graph4" type="button" id="graph4_button" class="btn btn-sm btn-outline-secondary">Graph 4</button>
+        <button href="/graph5" type="button" id="graph5_button" class="btn btn-sm btn-outline-secondary">Graph 5</button
+      </div>
+    </div>
+  </div>
+  <div class="row">
+    <div id='graph5' class="graph4">
+      {% if graph5 %}
+      {{ graph5|safe }}
+      {% else %}
+      <p>Graph 5 was not provided.</p>
+      {% endif %}
+    </div>
+  </div>
+</main>
 {% endblock %}
