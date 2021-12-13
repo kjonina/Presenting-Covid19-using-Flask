@@ -333,12 +333,12 @@ def graph5(aged_df, hospitalised_df):
 
     fig = make_subplots(rows = 1, cols = 2, specs=[[{'type':'domain'}, {'type':'domain'}]])
     fig.add_trace(go.Pie(labels=total_aged_table['Age Range'],
-                                 values=total_aged_table['Daily Cases'], name="Total COVID-19 Cases",
+                                 values=total_aged_table['Daily Cases'], 
                                   hovertemplate="<b>Age Range: %{label}</b><br><br>" +
                                         "Total % of COVID-19: %{percent} <br>"+
                                         "Total # of COVID-19: %{value} <br>"),1, 1)
     fig.add_trace(go.Pie(labels = total_hospitalised_table['Age Range'],
-                                 values = total_hospitalised_table['Daily Cases'], name = "Total Hospitalised COVID-19 Cases",
+                                 values = total_hospitalised_table['Daily Cases'],
                                  hovertemplate="<b>Age Range: %{label}</b><br><br>" +
                                         "Total % of Hospitalised COVID-19 Cases: %{percent} <br>" +
                                         "Total # of Hospitalised COVID-19 Cases: %{value} <br>"), 1, 2)
