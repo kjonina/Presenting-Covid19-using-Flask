@@ -29,34 +29,40 @@ def create_new_dfs(df):
     # =============================================================================
     # replacing all Nan with 0
     df['Daily Cases'] = df['Daily Cases'].fillna(0)
-    df['Diff'] = df['Diff'].fillna(0)
 
     #changing the 0.0 to 0
     df['Daily Cases'] = df['Daily Cases'].astype(int)
-    df['Diff'] = df['Diff'].astype(int)
 
     # =============================================================================
     # Dataset for Confirmed Covid Cases with Age Range
     # =============================================================================
     aged_df = df[df['Column'].str.startswith("Aged")]
+
+    # column 'Cases' actually represents 'Accumulated Cases'
     aged_df = aged_df.rename(columns={'Cases': 'Accumulated Cases'})
 
+    # assinging 0 to all NaN in this dataset
+    aged_df['Accumulated Cases'] = aged_df['Accumulated Cases'].fillna(0)
     # =============================================================================
     # Dataset for Hospitalised Confirmed Covid Cases with Age Range
     # =============================================================================
     hospitalised_df = df[df['Column'].str.contains("Hospitalised Aged")]
 
-    # column cases actually represents accumulated cases
+    # column 'Cases' actually represents 'Accumulated Cases'
     hospitalised_df = hospitalised_df.rename(columns={'Cases': 'Accumulated Cases'})
 
+    # assinging 0 to all NaN in this dataset
+    hospitalised_df['Accumulated Cases'] = hospitalised_df['Accumulated Cases'].fillna(0)
     # =============================================================================
     # Dataset for Confirmed Covid Cases with Age Range
     # =============================================================================
     aged_and_hospitalised_df = df[df['Column'].str.contains("Aged")]
 
-    # column cases actually represents accumulated cases
+    # column 'Cases' actually represents 'Accumulated Cases'
     aged_and_hospitalised_df = aged_and_hospitalised_df.rename(columns={'Cases': 'Accumulated Cases'})
 
+    # assinging 0 to all NaN in this dataset
+    aged_and_hospitalised_df['Accumulated Cases'] = aged_and_hospitalised_df['Accumulated Cases'].fillna(0)
     # =============================================================================
     # Dataset for Confirmed Covid Cases (NO Age Range)
     # =============================================================================
@@ -65,10 +71,11 @@ def create_new_dfs(df):
     # in this dataset, the age range is empty
     confirmed_cc_df = confirmed_cc_df.drop(columns = ['Age Range','Age Range', 'Daily Cases'])
 
-    # column cases actually represents accumulated cases
+    # renaming column 'Cases' to 'Daily Cases'
     confirmed_cc_df = confirmed_cc_df.rename(columns={'Cases': 'Daily Cases'})
 
-
+    # assinging 0 to all NaN in this dataset
+    confirmed_cc_df['Daily Cases'] = confirmed_cc_df['Daily Cases'].fillna(0)
     # =============================================================================
     # Dataset for Hospitalised Covid Cases (NO Age Range)
     # =============================================================================
@@ -77,10 +84,11 @@ def create_new_dfs(df):
     # in this dataset, the age range is empty
     hospital_cc_df = hospital_cc_df.drop(columns = ['Age Range'])
 
-    # column cases actually represents accumulated cases
+    # column 'Cases' actually represents 'Accumulated Cases'
     hospital_cc_df = hospital_cc_df.rename(columns={'Cases': 'Accumulated Cases'})
 
-
+    # assinging 0 to all NaN in this dataset
+    hospital_cc_df['Accumulated Cases'] = hospital_cc_df['Accumulated Cases'].fillna(0)
     # =============================================================================
     # Dataset for Covid Cases Requiring ICU
     # =============================================================================
@@ -92,15 +100,17 @@ def create_new_dfs(df):
     # column cases actually represents accumulated cases
     icu_cc_df = icu_cc_df.rename(columns={'Cases': 'Accumulated Cases'})
 
+    # column 'Cases' actually represents 'Accumulated Cases'
+    hospital_cc_df['Accumulated Cases'] = hospital_cc_df['Accumulated Cases'].fillna(0)
     # =============================================================================
     # Dataset for Median Age
     # =============================================================================
     median_age_df = df[df['Column'].str.contains("Median Age")]
 
     # in this dataset, the age range is empty
-    median_age_df = median_age_df.drop(columns = ['Age Range', 'Daily Cases','Diff'])
+    median_age_df = median_age_df.drop(columns = ['Age Range', 'Daily Cases'])
 
-    # column cases actually represents accumulated cases
+    # column 'Cases' actually represents 'Median Age'
     median_age_df = median_age_df.rename(columns={'Cases': 'Median Age'})
 
 

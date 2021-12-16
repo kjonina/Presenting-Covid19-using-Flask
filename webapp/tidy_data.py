@@ -117,18 +117,12 @@ def create_csv():
     # =============================================================================
     # Assigning age_list
     # =============================================================================
-    age_list = df['Age Range'].unique()
-
-    # removing NaN from the dataset
-    age_list = age_list[1:]
-
-
-    new_df = df.copy()
+    age_list = ['1-4', '5-14', '15-24', '25-34', '35-44', '45-54', '55-64', '65-74', '75-84', '85+']
 
     # =============================================================================
     #
     # =============================================================================
-    column_list = df['Column'].unique()
+    column_list = ['Confirmed Covid Cases', 'Total Confirmed Covid Cases', 'Confirmed Covid Deaths', 'Total Covid Deaths', 'Hospitalised Covid Cases', 'Requiring ICU Covid Cases', 'Healthcare Workers Covid Cases', 'Clusters Notified', 'Hospitalised Aged', 'Male', 'Female', 'Unknown', 'Aged','Median Age']
 
     # Columns that have accumulated cases and no daily cases count
     accumulated = ['Male','Hospitalised Covid Cases', 'Hospitalised Aged',
@@ -144,7 +138,6 @@ def create_csv():
     hospitalised_df = df[df['Column'].str.contains("Hospitalised Aged")]
     aged_df = df[df['Column'].str.startswith("Aged")]
 
-
     # =============================================================================
     #
     # =============================================================================
@@ -157,10 +150,6 @@ def create_csv():
                 h_df = hospitalised_df[hospitalised_df['Age Range'].str.contains(age)]
                 h_df = pd.DataFrame(h_df)
                 h_df['Daily Cases'] = h_df['Cases'].diff(1)
-                h_df['Diff'] = h_df['Daily Cases'].diff(1)
-    #             h_df = h_df.dropna()
-    #             h_df["Daily Cases"] = h_df["Daily Cases"].astype(int)
-    #             h_df["Diff"] = h_df["Diff"].astype(int)
                 df_list.append(h_df)
 
         elif "Aged" == i:
@@ -168,29 +157,17 @@ def create_csv():
                 a_df = aged_df[aged_df['Age Range'].str.contains(age)]
                 a_df = pd.DataFrame(a_df)
                 a_df['Daily Cases'] = a_df['Cases'].diff(1)
-                a_df['Diff'] = a_df['Daily Cases'].diff(1)
-    #             a_df = a_df.dropna()
-    #             a_df["Daily Cases"] = a_df["Daily Cases"].astype(int)
-    #             a_df["Diff"] = a_df["Diff"].astype(int)
                 df_list.append(a_df)
 
         elif  i in accumulated:
             n_df = df[df['Column'].str.contains(i)]
             n_df = pd.DataFrame(n_df)
             n_df['Daily Cases'] = n_df['Cases'].diff(1)
-            n_df['Diff'] = n_df['Daily Cases'].diff(1)
-    #         n_df = n_df.dropna()
-    #         n_df["Daily Cases"] = n_df["Daily Cases"].astype(int)
-    #         n_df["Diff"] = n_df["Diff"].astype(int)
             df_list.append(n_df)
         else:
             n_df = df[df['Column'].str.contains(i)]
             n_df = pd.DataFrame(n_df)
             n_df['Daily Cases'] = np.nan
-            n_df['Diff'] = n_df['Cases'].diff(1)
-    #         n_df = n_df.dropna()
-    #         n_df["Daily Cases"] = n_df["Daily Cases"].astype(int)
-    #         n_df["Diff"] = n_df["Diff"].astype(int)
             df_list.append(n_df)
     df =  pd.concat(df_list)
 
@@ -204,6 +181,7 @@ def create_csv():
     # dropping old_column
     df = df.drop(columns = ['old_column'])
     return df
+
     # =============================================================================
     # Saving new dataframe to csv
     # =============================================================================

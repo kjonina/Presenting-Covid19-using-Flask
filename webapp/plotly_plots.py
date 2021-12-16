@@ -13,8 +13,6 @@ import plotly.graph_objects as go
 
 def graph1(confirmed_cc_df, hospital_cc_df,icu_cc_df):
 
-
-
     fig = go.Figure()
 
     age = go.Scatter(x = confirmed_cc_df['Date'],
@@ -98,7 +96,7 @@ def graph1(confirmed_cc_df, hospital_cc_df,icu_cc_df):
 
 def graph2(aged_df):
 
-    aged_df = aged_df.drop(columns = ['Column', 'Accumulated Cases','Diff'])
+    aged_df = aged_df.drop(columns = ['Column', 'Accumulated Cases'])
 
     aged_table = pd.pivot_table(aged_df, index=['Date'], values = 'Daily Cases',
                         columns=['Age Range'])
@@ -161,7 +159,7 @@ def graph2(aged_df):
 def graph2_extra(hospitalised_df):
 
 
-    hospitalised_df = hospitalised_df.drop(columns = ['Column', 'Accumulated Cases','Diff'])
+    hospitalised_df = hospitalised_df.drop(columns = ['Column', 'Accumulated Cases'])
 
     hospitalised_table = pd.pivot_table(hospitalised_df, index=['Date'],  values = 'Daily Cases',
                         columns=['Age Range'])

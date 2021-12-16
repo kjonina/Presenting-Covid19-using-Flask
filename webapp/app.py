@@ -36,7 +36,7 @@ def show_graph1():
 def show_graph2():
     return render_template("graph2.html", graph2  = graph2(aged_df), graph2_extra = graph2_extra(hospitalised_df))
 
-# graph3
+# graph3 - TAKES A WHILE TO LOAD!!!
 @app.get("/graph3")
 def show_graph3():
     return render_template("graph3.html", graph3 = graph3(aged_df), graph3_extra = graph3_extra(hospitalised_df))
@@ -55,11 +55,12 @@ def show_graph5():
 # A Single Page
 # =============================================================================
 # a single page was developed with appropriate javascript on the assignement_page
-# however it took WWWWWAAAAAAAAAAYYYYYYYYYY to long to total_hospitalised_table
+# however it took WWWWWAAAAAAAAAAYYYYYYYYYY to long to load
 # because of all the graphs that had to be loaded and hidden
 # and the animation in graph 3 starts playing although the play button was not clicked
 # so that made the website really slow and unresponsive.
 # Instead, 5 pages dedicated to each graphs were decided upon.
+
 @app.get("/assignment")
 def show_assignment():
     return render_template("assignment_page.html", graph1 = graph1(confirmed_cc_df, hospital_cc_df,icu_cc_df),
