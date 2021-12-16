@@ -289,7 +289,7 @@ def graph4(confirmed_cc_df, median_age_df):
                                         "Date: %{x|%d %b %Y} <br>" +
                                         "Median Age: %{y:,.}<br>"+
                                         "<extra></extra>",
-                                 line = dict(color="#DDCC96")), secondary_y = True)
+                                 line = dict(color="#FF9900")), secondary_y = True)
 
 
     fig.update_xaxes(
@@ -306,16 +306,15 @@ def graph4(confirmed_cc_df, median_age_df):
     fig.update_layout(xaxis_rangeslider_visible = False)
 
     # Set y-axes titles
-    fig.update_yaxes(title_text="Covid-19 Cases", secondary_y=False)
-    fig.update_yaxes(title_text="Median Age", secondary_y=True)
+    fig.update_yaxes(title_text="Covid-19 Cases", secondary_y=False, title_font_size = 20)
+    fig.update_yaxes(title_text="Median Age", secondary_y=True, title_font_size = 20)
 
     fig.update_layout(showlegend=False)
     # Add title
     fig.update_layout(
-            title = 'Confirmed Covid Cases and Median Age',
-            title_font_size = 20)
+            title = 'Confirmed Covid Cases and Median Age', title_font_size=30)
 
-    fig.update_yaxes(showgrid=False)
+    fig['layout']['yaxis2']['showgrid'] = False
 
     graph4 = fig.to_html(full_html=False, default_height=1000, default_width=1500)
 
@@ -333,7 +332,7 @@ def graph5(aged_df, hospitalised_df):
 
     fig = make_subplots(rows = 1, cols = 2, specs=[[{'type':'domain'}, {'type':'domain'}]])
     fig.add_trace(go.Pie(labels=total_aged_table['Age Range'],
-                                 values=total_aged_table['Daily Cases'], 
+                                 values=total_aged_table['Daily Cases'],
                                   hovertemplate="<b>Age Range: %{label}</b><br><br>" +
                                         "Total % of COVID-19: %{percent} <br>"+
                                         "Total # of COVID-19: %{value} <br>"),1, 1)
