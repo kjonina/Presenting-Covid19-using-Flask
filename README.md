@@ -32,5 +32,5 @@ Using dual axis to demonstrate the differences between median and number of COVI
 ### Figure 5
 I have no excuses. This needs to be fixed.
 
-<img src='shttps://github.com/kjonina/Presenting-Covid19-using-Flask/blob/main/screenshot/figure5.PNG'/></a>
+<img src='https://github.com/kjonina/Presenting-Covid19-using-Flask/blob/main/screenshot/figure5.PNG'/></a>
 
