@@ -12,7 +12,7 @@ In June 2024, I am revising my choices.
 
 ### Figure 1
 
-<img src='https://github.com/kjonina/Presenting-Covid19-using-Flask/blob/main/screenshot/figure3.PNG'/></a>
+<img src='https://github.com/kjonina/Presenting-Covid19-using-Flask/blob/main/screenshot/figure1.PNG'/></a>
 
 ### Figure 2
 
