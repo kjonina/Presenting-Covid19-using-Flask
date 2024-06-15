@@ -1,7 +1,7 @@
 # Tidying Data, Plotly and Flask
 
 ## Upgrading Graphs
-In January 2022, I was tasked with creating five different graphs to visualise COVID-19 cases. 
+In January 2022, I was tasked with creating five different graphs to visualise COVID-19 daily cases, daily hospitalisation with COVID and Daily ICU Numbers. 
 
 At the time I focused on the following learning outcomes:
 - Create at least one animation
@@ -11,10 +11,12 @@ At the time I focused on the following learning outcomes:
 In June 2024, I am revising my choices.
 
 ### Figure 1
+Overall data visualisation of COVID-19 cases in Ireland. 
 
 <img src='https://github.com/kjonina/Presenting-Covid19-using-Flask/blob/main/screenshot/figure1.PNG'/></a>
 
 ### Figure 2
+Allows the user to select the *age group* and see the change in the COVID-19 cases for that age group
 
 <img src='https://github.com/kjonina/Presenting-Covid19-using-Flask/blob/main/screenshot/figure2.PNG'/></a>
 
