@@ -8,7 +8,7 @@ At the time I focused on the following learning outcomes:
 - Create at least one dual axis plot
 - Create at least one plot where two graphs are demonstrated side by side
 
-In June 2024, I am revising my choices for **FIgure 3** and **Figure 5**
+In June 2024, I am revising my choices for **Figure 3** and **Figure 5**
 
 ### Figure 1
 Overall data visualisation of COVID-19 cases in Ireland. 
