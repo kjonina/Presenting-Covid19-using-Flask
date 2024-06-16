@@ -38,7 +38,9 @@ Aim: to show that older people were hospitalised more often than young people
 Result: reliance on piechart to show percentage and causing confusion. Completely missing the point I was trying to show!
 
 Previous Version
+
 <img src='https://github.com/kjonina/Presenting-Covid19-using-Flask/blob/main/screenshot/figure5.PNG'/></a>
 
 Updated Chart
+
 <img src='https://github.com/kjonina/Presenting-Covid19-using-Flask/blob/main/screenshot/figure5_updated_v2.png'/></a>
