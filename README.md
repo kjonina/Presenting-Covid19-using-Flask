@@ -41,4 +41,4 @@ Previous Version
 <img src='https://github.com/kjonina/Presenting-Covid19-using-Flask/blob/main/screenshot/figure5.PNG'/></a>
 
 Updated Chart
-<img src='https://github.com/kjonina/Presenting-Covid19-using-Flask/blob/main/screenshot/figure5v_2.PNG'/></a>
+<img src='https://github.com/kjonina/Presenting-Covid19-using-Flask/blob/main/screenshot/figure5_updated_v2.PNG'/></a>
