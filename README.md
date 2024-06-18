@@ -29,6 +29,8 @@ Previous Version
 
 Updated Chart
 
+(It is a gif, so press that PLAY button!)
+
 <img src='https://github.com/kjonina/Presenting-Covid19-using-Flask/blob/main/screenshot/animation.gif'/></a>
 
 ### Figure 4
