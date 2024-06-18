@@ -48,6 +48,6 @@ Previous Version
 
 <img src='https://github.com/kjonina/Presenting-Covid19-using-Flask/blob/main/screenshot/figure5.PNG'/></a>
 
-Updated Chart
+Updated Chart - Still needs work? Or is it just unnecessary?
 
 <img src='https://github.com/kjonina/Presenting-Covid19-using-Flask/blob/main/screenshot/figure5_updated_v2.png'/></a>
