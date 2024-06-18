@@ -24,7 +24,10 @@ Allows the user to select the *age group* and see the change in the COVID-19 cas
 I was highly influenced by [Hans Rosling's amazing Ted Talk](https://www.youtube.com/watch?v=hVimVzgtD6w&ab_channel=TED) which demonstrates the sheer power of a great data visusalisation. Although I am proud of learning how to do animated plot in plotly, it should not have been used. 
 
 Previous Version
+
 <img src='https://github.com/kjonina/Presenting-Covid19-using-Flask/blob/main/screenshot/figure3.PNG'/></a>
+
+<img src='https://github.com/kjonina/Presenting-Covid19-using-Flask/blob/main/screenshot/animation.gif'/></a>
 
 ### Figure 4
 Using dual axis to demonstrate the differences between median and number of COVID-19 cases. 
